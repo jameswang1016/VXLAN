@@ -1,17 +1,17 @@
 一.题目
 配置一个虚拟网络，要求：
-1. 使用帐号user@yunify.com#XXX, 密码 pass4you,
+- 1. 使用帐号user@yunify.com#XXX, 密码 pass4you,
       登陆https://console.qingcloud.com
-2. 在上海1区，建立1个vpc，创建1个vxnet, 和3个虚拟主机。
-1. 把这3个虚拟主机当作计算节点，配置虚拟网络。
+- 2. 在上海1区，建立1个vpc，创建1个vxnet, 和3个虚拟主机。
+     1. 把这3个虚拟主机当作计算节点，配置虚拟网络。
      2. 通过vpc的端口转发，让你能从公网ssh到虚拟主机
-3. 每个主机里面:
+- 3. 每个主机里面:
      1. 建立一个linux bridge, 使用者brctl 命令。
      2. 使用 Linux network namespace 模拟虚拟机，方法： ip link 创建 veth网卡，分别挂载到bridge和netns里面
      3. 在netns里面配置ip地址, 比如 100.0.0.2/24
      4. 创建vxlan link，并添加到bridge里面
      5. 配置vxlan规则，让netns里面的地址100.0.0.0/24可以互通
-4. 虚拟网络要能做到:
+- 4. 虚拟网络要能做到:
      1. 不用组播，使用单播发送vxlan udp报文
      2. 虚拟网络支持广播和组播
      3.  arp泛洪抑制
