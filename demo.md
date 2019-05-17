@@ -27,7 +27,8 @@ i-l2lpi1qh: ip地址为192.168.0.4，通过ssh连接的端口号为7654。
 
 - 3.按照题目要求的过程在每个主机内创建了bridge,netns模拟虚拟机,veth模拟网线连接bridge与netns,为netns配置ip地址,创建vxlan并添加到bridge中。
 其中,三个主机内的netns配置的ip地址分别为:100.0.0.1/24，100.0.0.2/24，100.0.0.3/24。配置vxlan规则，使主机内netns内的地址可以互通，主机内netns可以互相ping通,如图1所示：
-![image](G:/1.png)
+
+![image](https://share.weiyun.com/5iTAHOC)
 
 
 图1:主机1内的netns分别ping通主机2主机3内的netns
@@ -43,12 +44,12 @@ bridge fdb append ff:ff:ff:ff:ff:ff dev vxlan10 dst 192.168.0.4
 注：要想ping广播地址有回应必须修改内核的参数：
 ip netns exec net0 sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=0
 广播通过ping100.0.0.255这个广播地址来实现，广播的效果如图2所示：
-
+[!pic2](https://share.weiyun.com/5ioV8eR)
 图2：主机1内的netns ping广播地址100.0.0.255
 4.2中要支持组播，在每个主机内的netns内设置如下：
 ip netns exec net0 route add -net 224.0.0.0 netmask 240.0.0.0 dev eth1
 Ping多播地址224.0.0.1，可以ping通，如图3所示：
-
+[!image](https://share.weiyun.com/5BaqQKi)
 图3：主机1内的netns ping组播地址224.0.0.1
 
 - 4.3 arp泛洪抑制，我在vxlan规则中加了一个proxy的限定，手动维护arp表，当接收到arp请求时发现arp表里有就可以直接应答，而不是之前的泛洪。配置如下：
