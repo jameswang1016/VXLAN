@@ -27,7 +27,7 @@ i-l2lpi1qh: ip地址为192.168.0.4，通过ssh连接的端口号为7654。
 
 - 3.按照题目要求的过程在每个主机内创建了bridge,netns模拟虚拟机,veth模拟网线连接bridge与netns,为netns配置ip地址,创建vxlan并添加到bridge中。
 其中,三个主机内的netns配置的ip地址分别为:100.0.0.1/24，100.0.0.2/24，100.0.0.3/24。配置vxlan规则，使主机内netns内的地址可以互通，主机内netns可以互相ping通,如图1所示：
-
+![image](G:/1.png)
 
 
 图1:主机1内的netns分别ping通主机2主机3内的netns
