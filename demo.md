@@ -1,6 +1,6 @@
 一.题目
 配置一个虚拟网络，要求：
-- 1. 使用帐号user@yunify.com#XXX, 密码 pass4you,
+- 1. 使用帐号user@yunify.com#XXX, 密码 xxxx,
       登陆https://console.qingcloud.com
 - 2. 在上海1区，建立1个vpc，创建1个vxnet, 和3个虚拟主机。
      1. 把这3个虚拟主机当作计算节点，配置虚拟网络。
